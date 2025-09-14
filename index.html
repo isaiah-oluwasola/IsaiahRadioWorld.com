@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isaiah Online Radio Station</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: linear-gradient(-45deg, #161616, #203a43, #848686, #494949);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 2.2rem;
+      color: #ff9800;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+
+    p.tagline {
+      margin-top: -10px;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    .container {
+      flex: 1;
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 600px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+    }
+
+    select, input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      outline: none;
+      background: rgba(255,255,255,0.1);
+      color: #000000;
+    }
+
+    button {
+      padding: 14px 22px;
+      margin: 10px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    }
+
+    button:hover {
+      background: #e64a19;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff9800;
+    }
+
+    audio {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ff9800;
+    }
+
+    #nowPlaying {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffeb3b;
+      text-shadow: 0 0 8px #ff9800;
+    }
+
+    footer {
+      background: rgba(0,0,0,0.6);
+      padding: 12px;
+      font-size: 14px;
+      color: #ccc;
+      text-align: center;
+    }
+
+    /* 📱 Mobile Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      .container {
+        margin: 20px;
+        padding: 15px;
+      }
+      select, input {
+        width: 100%;
+        font-size: 14px;
+      }
+      button {
+        width: 90%;
+        margin: 8px 0;
+        font-size: 15px;
+      }
+      audio {
+        max-width: 100%;
+      }
+      #nowPlaying {
+        font-size: 16px;
+      }
+      footer {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎶 Isaiah Online Radio</h1>
+    <p class="tagline">Your gateway to music across the world 🌍</p>
+  </header>
+
+  <div class="container">
+    <label for="stationSelect"><strong>Choose a Station:</strong></label>
+    <select id="stationSelect">
+      <option value="">Please Select A Radio Station Below</option>
+      <!-- Nigeria -->
+      <option value="https://cast4.asurahosting.com/proxy/radioni1/stream">Kapital FM (Abuja)</option>
+      <option value="https://cast4.my-control-panel.com/proxy/federal3/stream">Power FM Beta (Abuja)</option>
+      <option value="http://cast1.my-control-panel.com:8998/;">Supreme FM (Kaduna)</option>
+      <option value="https://eu8.fastcast4u.com/proxy/pyramidfmkn?mp=/1">Pyramid FM Kano (Kaduna)</option>
+      <option value="https://go.webgateready.com/bondfm/radio.mp3">Bond FM (Lagos)</option>
+      <option value="https://go.webgateready.com/metrofm/radio.mp3">Metro FM (Lagos)</option>
+      <option value="https://go.webgateready.com/radioonefm/radio.mp3">Radio One (Lagos)</option>
+      <!-- USA -->
+      <option value="https://kexp-mp3-128.streamguys1.com/kexp128.mp3">KEXP Seattle (USA)</option>
+      <option value="https://stream.wnyc.org/wnycfm-web">WNYC New York (USA)</option>
+      <option value="https://stream-uk1.radioparadise.com/aac-320">Radio Paradise (USA)</option>
+      <!-- Canada -->
+      <option value="https://www.cbc.ca/lite/radio/live-radio/toronto">CBC Radio Toronto (Canada)</option>
+      <!-- South Africa -->
+      <option value="http://ice0.sa.cdn.siaradio.com/za_010_mp3?provider=log">Metro FM (South Africa)</option>
+      <!-- Netherlands -->
+      <option value="http://icecast.omroep.nl/radio1-bb-mp3">NPO Radio 1 (Netherlands)</option>
+      <!-- UK -->
+      <option value="http://radio.canstream.co.uk:8075/live.aac">Jazz London Radio (UK)</option>
+      <!-- Philippines -->
+      <option value="https://air.radyonatinfm.com:8020/sablayan">Radyo Natin Sablayan (Philippines)</option>
+      <!-- Portugal -->
+      <option value="https://rcstream.net/listen/radio_cordial/stream">Radio Cordial (Portugal)</option>
+      <!-- USA Other -->
+      <option value="http://radio.1007thecube.com:8000/nkub-mono.mp3">NKUB-FM Los Angeles (USA)</option>
+      <option value="http://96.74.133.115:8000/stream">Local FM (Monee, USA)</option>
+      <option value="http://113fm.cdnstream1.com/1800_128?fromyp=true">113FM Jazz It Up (Las Vegas, USA)</option>
+    </select>
+
+    <br>
+    <button onclick="playRadio()">▶ Play</button>
+    <button onclick="pauseRadio()">⏸ Pause</button>
+
+    <div id="nowPlaying">🎧 Not Playing</div>
+    <audio id="radioPlayer" controls></audio>
+  </div>
+
+  <footer>
+    Copyright © 2025 by Isaiah Oluwasola
+  </footer>
+
+  <script>
+    alert("Please note: Not all stations are accessible 24/7")
+
+
+    const player = document.getElementById('radioPlayer');
+    const stationSelect = document.getElementById('stationSelect');
+    const nowPlaying = document.getElementById('nowPlaying');
+
+    function playRadio() {
+      const url = stationSelect.value;
+      const name = stationSelect.options[stationSelect.selectedIndex].text;
+      if(url){
+        player.src = url;
+        player.play();
+        nowPlaying.textContent = "🎶 Now Playing: " + name;
+      } else {
+        nowPlaying.textContent = "⚠ Please select a station.";
+      }
+    }
+
+    function pauseRadio() {
+      player.pause();
+      nowPlaying.textContent = "⏸ Radio Paused";
+    }
+  </script>
+</body>
+</html>
